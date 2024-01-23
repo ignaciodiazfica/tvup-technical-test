@@ -10,7 +10,7 @@ export default function PokemonListViewModel({ GetPokemonsUseCase }: Props) {
   const [error, setError] = useState("");
   const [pokemons, setPokemons] = useState<Pokemon[]>([]);
 
-  async function getPokemons() {
+  async function getPokemons(): Promise<void> {
     const { result, error } = await GetPokemonsUseCase.execute();
     setError(error ?? "");
     setPokemons(result as Pokemon[]);

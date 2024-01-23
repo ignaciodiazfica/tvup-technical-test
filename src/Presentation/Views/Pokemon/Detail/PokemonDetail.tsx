@@ -15,7 +15,7 @@ export default function PokemonDetail() {
 
   useEffect(() => {
     getPokemon(id);
-  }, []);
+  }, [id]);
   return (
     <>
       <div className="flex items-center justify-center">
@@ -36,8 +36,19 @@ export default function PokemonDetail() {
           <Image src={image} alt={name} size={48} />
         </div>
       </div>
-      <div className="flex items-center justify-center mt-6">
-        <Button text="Volver" onClick={() => navigate("/")} />
+      <div className="flex items-center justify-center mt-6 gap-3">
+        <Button
+          text="Anterior"
+          onClick={() => navigate(`/${id ? parseInt(id) - 1 : 1}`)}
+          type="secondary"
+          disabled={id === "1"}
+        />
+        <Button text="Volver" onClick={() => navigate("/")} type="primary" />
+        <Button
+          text="Siguiente"
+          onClick={() => navigate(`/${id ? parseInt(id) + 1 : 2}`)}
+          type="secondary"
+        />
       </div>
     </>
   );

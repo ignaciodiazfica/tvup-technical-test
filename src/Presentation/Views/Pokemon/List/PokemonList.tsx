@@ -17,7 +17,7 @@ export default function PokemonList() {
     <div className="flex flex-wrap gap-10 sm:gap-1">
       {pokemons.map((pokemon: Pokemon) => (
         <div key={pokemon.id} className="w-1/4 p-4 mx-4">
-          <Button text={`${pokemon.id} - ${pokemon.name}`} onClick={() => navigate(`/${pokemon.id}`)} />
+          <Button text={`${pokemon.id} - ${pokemon.name}`} onClick={() => navigate(`/${pokemon.id}`)} type="info" />
         </div>
       ))}
     </div>
