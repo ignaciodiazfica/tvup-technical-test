@@ -1,17 +1,11 @@
-type ButtonType =
-  | "primary"
-  | "secondary"
-  | "danger"
-  | "warning"
-  | "gray"
-  | "info";
-interface Props {
-  text: string;
-  onClick: () => void;
-  type?: ButtonType;
-  disabled?: boolean;
-}
-export function Button({ text, onClick, type, disabled }: Props) {
+import { IButton } from "../../../Domain/interfaces/Base/IButton";
+
+export function Button({
+  text,
+  onClick,
+  type = "primary",
+  disabled = false,
+}: IButton) {
   let colorClass = "";
   switch (type) {
     case "primary":

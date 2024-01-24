@@ -5,5 +5,7 @@ export interface GetAllResponse {
         url: string;
         id?: number;
       }[];
+      next: string | null;
+      previous: string | null;
     };
   }

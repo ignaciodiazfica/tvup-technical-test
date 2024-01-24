@@ -5,14 +5,14 @@ interface Props {
 }
 
 export interface IPokemonRepository {
-  getPokemons(): Promise<Response>;
+  getPokemons(limit:number, offset: number): Promise<Response>;
   getPokemon(id: number): Promise<Response>;
 }
 
 export function PokemonRepository({ PokemonDataSource }: Props) {
   return {
-    async getPokemons(): Promise<Response> {
-      const { result, error } = await PokemonDataSource.getAll();
+    async getPokemons(limit:number, offset: number): Promise<Response> {
+      const { result, error } = await PokemonDataSource.getAll(limit, offset);
       return { result, error };
     },
     async getPokemon(id: number): Promise<Response> {

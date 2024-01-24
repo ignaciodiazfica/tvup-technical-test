@@ -9,7 +9,9 @@ export function PokemonsMapper(response: GetAllResponse): Pokemon[]{
         return {
             id: id,
             name: pokemon.name,
-            url: pokemon.url
+            url: pokemon.url,
+            next: response.data.next,
+            previous: response.data.previous,
         }
       });
       return pokemons;

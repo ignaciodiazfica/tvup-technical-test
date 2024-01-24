@@ -4,11 +4,11 @@ import PokemonDetail from "./Presentation/Views/Pokemon/Detail/PokemonDetail";
 
 function App() {
   return (
-    <div className="mt-16 mx-16">
+    <div className="mt-8 mx-0">
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<PokemonList />} />
-          <Route path="/:id" element={<PokemonDetail />} />
+          <Route path="/pokemon/:id" element={<PokemonDetail />} />
         </Routes>
       </BrowserRouter>
     </div>

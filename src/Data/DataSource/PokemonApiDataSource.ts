@@ -6,13 +6,18 @@ import { PokemonDetail } from "../../Domain/interfaces/Pokemon/IPokemonDetail";
 import { PokemonsMapper, PokemonMapper } from "../DataMapper/Pokemon";
 import { Response } from "../../Domain/interfaces/Base/IResponse";
 export interface IPokemonApiDataSource {
-  getAll(): Promise<Response>;
+  getAll(limit: number, offset: number): Promise<Response>;
   getOne(id: number): Promise<Response>;
 }
-export async function getAll(): Promise<Response> {
+
+export interface GetAllRequest {
+  limit?: number;
+  offset?: number;
+}
+export async function getAll(limit = 10, offset = 0): Promise<Response> {
   let response: Response = { result: null, error: null };
   try {
-    const data: GetAllResponse = await axios.get(`${API_URL}?limit=10`);
+    const data: GetAllResponse = await axios.get(`${API_URL}?limit=${limit}&offset=${offset}`);
     const pokemons = PokemonsMapper(data);
     response = { result: pokemons, error: null };
   } catch (err) {
